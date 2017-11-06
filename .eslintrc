@@ -1,0 +1,9 @@
+{
+  "extends": "eslint-config-egg",
+  "rules": {
+    // enable additional rules
+    "indent": ["error", 4 , {"SwitchCase": 1}],
+
+    "no-trailing-spaces": "off"
+  }
+}
