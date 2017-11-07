@@ -4,6 +4,8 @@
     // enable additional rules
     "indent": ["error", 4 , {"SwitchCase": 1}],
 
+    "prefer-const": "off",
+
     "no-trailing-spaces": "off"
   }
 }

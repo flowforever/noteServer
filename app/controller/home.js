@@ -1,10 +1,9 @@
 'use strict';
 
 module.exports = app => {
-    class HomeController extends app.Controller {
+    return class HomeController extends app.Controller {
         async index() {
-            this.ctx.body = 'hi, egg 1';
+            this.ctx.body = 'hi, egg';
         }
-    }
-    return HomeController;
+    };
 };
