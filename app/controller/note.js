@@ -1,5 +1,4 @@
 'use strict';
-const _ = require('lodash');
 const shortid = require('shortid');
 
 module.exports = {
