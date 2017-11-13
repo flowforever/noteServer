@@ -1,6 +1,6 @@
 'use strict';
 const _ = require('lodash');
-var shortid = require('shortid');
+const shortid = require('shortid');
 
 module.exports = {
     async list(ctx) {
