@@ -1,4 +1,6 @@
 'use strict';
+const _ = require('lodash');
+var shortid = require('shortid');
 
 module.exports = {
     async list(ctx) {
@@ -11,11 +13,14 @@ module.exports = {
     },
 
     async create(ctx) {
+        const reqBody = ctx.request.body;
+
         const note = await ctx.model.Note.create({
-            hash: Date.now(),
-            title: `new note title ${new Date()}`,
-            content: `new note content ${new Date()}`,
+            hash: shortid.generate(),
+            title: reqBody.title || `note ${new Date()}`,
+            content: reqBody.title || `note content ${new Date()}`,
         });
+
         ctx.body = {
             succes: true,
             note,
@@ -28,10 +33,10 @@ module.exports = {
     },
 
     async update(ctx) {
-        const postBody = ctx.request.body;
+        const reqBody = ctx.request.body;
         const note = await ctx.model.Note.findById(ctx.query.id);
-        note.content = postBody.content;
-        note.title = postBody.title;
+        note.content = reqBody.content;
+        note.title = reqBody.title;
         await note.save();
     },
 

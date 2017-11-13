@@ -7,7 +7,8 @@
     "egg": "^1.9.0",
     "egg-mongoose": "^2.1.1",
     "egg-scripts": "^2.1.0",
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.4",
+    "shortid": "^2.2.8"
   },
   "devDependencies": {
     "autod": "^2.10.0",
