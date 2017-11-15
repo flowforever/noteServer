@@ -34,7 +34,7 @@ module.exports = {
 
     async getByHash(ctx) {
         const hash = ctx.query.hash;
-        ctx.body = await ctx.model.Note.findOne({hash});
+        ctx.body = await ctx.model.Note.findOne({ hash });
     },
 
     async update(ctx) {
