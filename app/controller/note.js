@@ -15,7 +15,6 @@ module.exports = {
         const reqBody = ctx.request.body;
 
         const note = await ctx.model.Note.findOne({ hash: reqBody.hash });
-        console.log(note)
 
         if (note) {
             note.content = reqBody.content;
