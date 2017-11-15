@@ -2,14 +2,6 @@
 const shortid = require('shortid');
 
 module.exports = {
-    async list(ctx) {
-        const list = await ctx.model.Note.find({});
-        ctx.body = {
-            succes: true,
-            total: list.length,
-            list,
-        };
-    },
 
     async saveNote(ctx) {
         const reqBody = ctx.request.body;
