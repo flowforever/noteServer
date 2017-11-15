@@ -25,9 +25,7 @@
     "node": ">=6.0.0"
   },
   "scripts": {
-    "postinstall": "cd node_modules/note-so-web && npm install && npm run build && cd ../..",
-    "prerestart": "npm install",
-    "restart": "git pull && npm install && npm run stop && npm run start",
+    "restart": "git pull && npm install && build-note-so-web && npm run stop && npm run start",
     "start": "egg-scripts start --daemon",
     "stop": "egg-scripts stop",
     "dev": "egg-bin dev",
@@ -37,7 +35,8 @@
     "cov": "egg-bin cov",
     "lint": "eslint .",
     "ci": "npm run lint && npm run cov",
-    "autod": "autod"
+    "autod": "autod",
+    "build-note-so-web": "cd node_modules/note-so-web && npm install && npm run build && cd ../.."
   },
   "ci": {
     "version": "6, 8"
