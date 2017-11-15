@@ -1,5 +1,5 @@
 {
-  "name": "noteSoServer",
+  "name": "note-so-server",
   "version": "1.0.0",
   "description": "",
   "private": true,
@@ -8,7 +8,8 @@
     "egg-mongoose": "^2.1.1",
     "egg-scripts": "^2.1.0",
     "lodash": "^4.17.4",
-    "shortid": "^2.2.8"
+    "shortid": "^2.2.8",
+    "note-so-web": "git+https://github.com/flowforever/noteSoWeb.git"
   },
   "devDependencies": {
     "autod": "^2.10.0",
@@ -24,6 +25,8 @@
     "node": ">=6.0.0"
   },
   "scripts": {
+    "postinstall": "cd node_modules/note-so-web && npm install && npm run build",
+    "prestart": "npm install",
     "start": "egg-scripts start --daemon",
     "stop": "egg-scripts stop",
     "dev": "egg-bin dev",
