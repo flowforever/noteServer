@@ -25,7 +25,7 @@
     "node": ">=6.0.0"
   },
   "scripts": {
-    "restart": "git pull && npm install && build-note-so-web && npm run stop && npm run start",
+    "restart": "git pull && npm install && npm run build-note-so-web && npm run stop && npm run start",
     "start": "egg-scripts start --daemon",
     "stop": "egg-scripts stop",
     "dev": "egg-bin dev",
