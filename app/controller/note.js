@@ -5,18 +5,26 @@ module.exports = {
 
     async saveNote(ctx) {
         const reqBody = ctx.request.body;
-
+    
         const note = await ctx.model.Note.findOne({ hash: reqBody.hash });
-
-        if (note) {
-            note.content = reqBody.content;
-            await note.save();
+        
+        if (reqBody.content) {
+            
+    
+            if (note) {
+                note.content = reqBody.content;
+                await note.save();
+            } else {
+                await ctx.model.Note.create({
+                    hash: reqBody.hash || shortid.generate(),
+                    title: reqBody.title || `note ${new Date()}`,
+                    content: reqBody.content || `note content ${new Date()}`,
+                });
+            }
         } else {
-            await ctx.model.Note.create({
-                hash: reqBody.hash || shortid.generate(),
-                title: reqBody.title || `note ${new Date()}`,
-                content: reqBody.content || `note content ${new Date()}`,
-            });
+            if (note) {
+                await ctx.model.Note.remove({ hash: reqBody.hash });
+            }
         }
 
         ctx.body = {
