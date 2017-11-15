@@ -20,6 +20,7 @@ module.exports = app => {
             let ver = words[0];
     
             switch (ver) {
+                case 'save':
                 case 'create':
                 case 'update':
                 case 'post':

@@ -11,24 +11,36 @@ module.exports = {
         };
     },
 
-    async create(ctx) {
+    async saveNote(ctx) {
         const reqBody = ctx.request.body;
 
-        const note = await ctx.model.Note.create({
-            hash: shortid.generate(),
-            title: reqBody.title || `note ${new Date()}`,
-            content: reqBody.title || `note content ${new Date()}`,
-        });
+        const note = await ctx.model.Note.findOne({ hash: reqBody.hash });
+        console.log(note)
+
+        if (note) {
+            note.content = reqBody.content;
+            await note.save();
+        } else {
+            await ctx.model.Note.create({
+                hash: reqBody.hash || shortid.generate(),
+                title: reqBody.title || `note ${new Date()}`,
+                content: reqBody.content || `note content ${new Date()}`,
+            });
+        }
 
         ctx.body = {
-            succes: true,
-            note,
+            success: true,
         };
     },
 
     async detail(ctx) {
         const id = ctx.query.id;
         ctx.body = await ctx.model.Note.findById(id);
+    },
+
+    async getByHash(ctx) {
+        const hash = ctx.query.hash;
+        ctx.body = await ctx.model.Note.findOne({hash});
     },
 
     async update(ctx) {
@@ -40,7 +52,7 @@ module.exports = {
     },
 
     async updateHash(ctx) {
-        const { id, hash } = ctx.query;
+        const {id, hash} = ctx.query;
         const note = await ctx.model.Note.findById(id);
         note.hash = hash;
         await note.save();
