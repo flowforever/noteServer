@@ -25,7 +25,7 @@
     "node": ">=6.0.0"
   },
   "scripts": {
-    "postinstall": "cd node_modules/note-so-web && npm install && npm run build",
+    "postinstall": "cd node_modules/note-so-web && npm install && npm run build && cd ../..",
     "prerestart": "git pull && npm install",
     "restart": "npm run stop && npm run start",
     "start": "egg-scripts start --daemon",
