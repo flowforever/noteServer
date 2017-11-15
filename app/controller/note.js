@@ -5,12 +5,8 @@ module.exports = {
 
     async saveNote(ctx) {
         const reqBody = ctx.request.body;
-    
         const note = await ctx.model.Note.findOne({ hash: reqBody.hash });
-        
         if (reqBody.content) {
-            
-    
             if (note) {
                 note.content = reqBody.content;
                 await note.save();
@@ -26,7 +22,6 @@ module.exports = {
                 await ctx.model.Note.remove({ hash: reqBody.hash });
             }
         }
-
         ctx.body = {
             success: true,
         };
