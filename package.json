@@ -26,8 +26,8 @@
   },
   "scripts": {
     "postinstall": "cd node_modules/note-so-web && npm install && npm run build && cd ../..",
-    "prerestart": "git pull && npm install",
-    "restart": "npm run stop && npm run start",
+    "prerestart": "npm install",
+    "restart": "git pull && npm install && npm run stop && npm run start",
     "start": "egg-scripts start --daemon",
     "stop": "egg-scripts stop",
     "dev": "egg-bin dev",
