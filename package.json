@@ -4,12 +4,12 @@
   "description": "",
   "private": true,
   "dependencies": {
+    "bluebird": "^3.5.1",
     "egg": "^1.9.0",
     "egg-mongoose": "^2.1.1",
     "egg-scripts": "^2.1.0",
     "lodash": "^4.17.4",
-    "shortid": "^2.2.8",
-    "note-so-web": "git+https://github.com/flowforever/noteSoWeb.git"
+    "shortid": "^2.2.8"
   },
   "devDependencies": {
     "autod": "^2.10.0",
@@ -25,7 +25,8 @@
     "node": ">=6.0.0"
   },
   "scripts": {
-    "restart": "git pull && npm install && npm run build-note-so-web && npm run stop && npm run start",
+    "postinstall": "npm run build-note-so-web",
+    "restart": "git pull && npm install && npm run stop && npm run start",
     "start": "egg-scripts start --daemon",
     "stop": "egg-scripts stop",
     "dev": "egg-bin dev",
@@ -36,7 +37,7 @@
     "lint": "eslint .",
     "ci": "npm run lint && npm run cov",
     "autod": "autod",
-    "build-note-so-web": "cd node_modules/note-so-web && npm install && npm run build && cd ../.."
+    "build-note-so-web": "node updateWeb"
   },
   "ci": {
     "version": "6, 8"
