@@ -25,7 +25,7 @@
   },
   "scripts": {
     "prod": "npm run restart && cp nginx/noteSo.conf /etc/nginx/sites-enabled/noteSo.conf && service nginx restart",
-    "restart": "git pull && npm install && npm run build-note-so-web && npm run stop && npm run start",
+    "restart": "git pull && rm -rf node_modules/ && npm install && npm run build-note-so-web && npm run stop && npm run start",
     "start": "egg-scripts start --daemon",
     "stop": "egg-scripts stop",
     "dev": "egg-bin dev",
